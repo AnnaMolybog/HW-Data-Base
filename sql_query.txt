@@ -1,0 +1,29 @@
+1. Создание базы данных
+CREATE DATABASE hw_mysql
+2. Удаление Удаление базы данных
+DROP DATABASE hw_mysql
+3. Создание таблицы users c такими полями
+CREATE TABLE users (
+id INT AUTO_INCREMENT,
+name VARCHAR(35),
+surname VARCHAR(35),
+email VARCHAR(60) NOT NULL,
+password VARCHAR(100) NOT NULL,
+age TINYINT,
+is_active TINYINT,
+is_admin TINYINT,
+PRIMARY KEY (id)
+)
+4. Очистка таблицы users
+DELETE FROM users
+5. Полное удаление таблицы users
+DROP TABLE users
+6. Написать SQL на 4 CRUD операции в таблице users
+CREATE = INSERT:
+INSERT INTO users (name, surname, email, password, age, is_active, is_admin) VALUES ('Anna', 'Molibog', 'anna.molybog@gmail.com', 'anna', '25', '0', '1')
+READ = SELECT:
+SELECT * FROM users
+UPDATE
+UPDATE users SET password = 'a.molibog' WHERE id = 1
+DELETE
+DELETE FROM users WHERE id = 1
