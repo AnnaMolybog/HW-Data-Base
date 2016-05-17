@@ -47,10 +47,20 @@ function insert ($link, $table, array $data) {
 
 function update ($link, $table, array $data, $id)
 {
-    foreach ($data as $key => $item) {
+    $sql = "UPDATE $table SET country_name = '$data[country_name]',
+ abbr_name = '$data[abbr_name]',
+ area = '$data[area]',
+ population = '$data[population]',
+ president = '$data[president]',
+ continent_id = '$data[continent_id]',
+ Prime_Minister = '$data[Prime_Minister]'
+ WHERE id_country = $id";
+    query($sql, $link);
+
+    /*foreach ($data as $key => $item) {
         $sql = "UPDATE $table SET $key = '$item' WHERE id_country = $id";
         query($sql, $link);
-    }
+    }*/
 }
 
 function delete($link, $table, $id) {
@@ -74,14 +84,19 @@ insert($connection, $table, $arrForInsert);
 $data = select($connection, $table/*, $idForSelect*/);
 print_r($data);
 $arrForUpdate = [
-    'country_name' => "Austria",
-    'abbr_name' => "au",
+    'country_name' => "Belgium",
+    'abbr_name' => "bl",
+    'area' => "87",
+    'population' => "100",
+    'president' => "Spain President",
+    'continent_id' => "1",
+    'Prime_Minister' => "Spain Prime Minister"
 ];
 $idForUpdate = '13';
 update($connection, $table, $arrForUpdate, $idForUpdate);
 $data = select($connection, $table/*, $idForSelect*/);
 print_r($data);
-$idForDelete = '21';
+$idForDelete = '29';
 delete($connection, $table, $idForDelete);
 $data = select($connection, $table/*, $idForSelect*/);
 print_r($data);
